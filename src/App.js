@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import logo from './logolist.png';
 import './App.css';
-import MyButton from './Components/MyButton';
-import { PlusOutlined } from '@ant-design/icons';
-
+import MyButton from './components/MyButton';
+import { PlusCircleOutlined } from '@ant-design/icons';
+import ListModal from './components/ListModal';
 
 export default function App() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
+  console.log(isModalVisible);
   return (
     <div className="App">
       <header className="App-header">
@@ -14,12 +17,12 @@ export default function App() {
           Bienvenue sur mon application de gestion de listes
         </p>
         <MyButton
-          tooltip="Ajouter une liste"
-          onClick={() => console.log("Cliqué")}
-          icon={<PlusOutlined />}
-        >
+          icon={<PlusCircleOutlined />}
+          onClick={() => setIsModalVisible(true)}
+          >
           Ajouter une liste
-        </MyButton>
+          </MyButton>
+          <ListModal modalTitle="Ajout de liste" isVisible={isModalVisible} handleCancel={() => setIsModalVisible(false)} />
       </header>
     </div>
   );
