@@ -1,20 +1,18 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import { Button, Tooltip } from 'antd';
 
-
-function MyButton(props) {
-    return (
-        <Button 
-            variant="outlined" 
-            color="secondary" 
-            size="large" 
-            onClick={props.onClick}
-            >
-              {props.children}
-            
-        </Button>
-    );
+export default function MyButton(props) {
+  return (
+    <Tooltip title={props.tooltip}>
+      <Button
+        shape="round"
+        type="primary"
+        size="large"
+        onClick={props.onClick}
+        icon={props.icon}
+      >
+        {props.children}
+      </Button>
+    </Tooltip>
+  );
 }
-
-export default MyButton;
