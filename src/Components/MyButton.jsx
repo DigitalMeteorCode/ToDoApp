@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Tooltip } from 'antd';
+import { Button } from 'antd';
 
 export default function MyButton(props) {
   return (

@@ -1,4 +1,5 @@
-import firebase from "firebase";
+//import firebase from "firebase"; cet import est daté d'un vieux versionnage de firebase. celui ci-dessous est comptatible avec la nouvelle version (9.0.2) de firebase
+import firebase from 'firebase/compat/app';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDsuliXndvhklkwH25DDeNINhOaX7RFmKU",
