@@ -4,8 +4,8 @@ import ListForm from "./ListForm";
 import Fire from "../Fire";
 
 export default function ListModal(props) {
-    const [name,setName] = useState("");
-    const [color, setColor] = useState("#3B97FF");
+    const [name,setName] = useState(props.list ? props.list.name : "");
+    const [color, setColor] = useState(props.list ? props.list.color : "#3B97FF");
     const [error, setError] = useState(null);
 
     function handleSubmit() {
@@ -31,7 +31,7 @@ export default function ListModal(props) {
             onCancel={props.handleCancel}
             footer={[
                 <Button type="primary" shape="round" onClick={handleSubmit}>
-                    Créer la liste
+                    {props.lis ? "Valider modifications" : "Créer la liste"}
                 </Button>
             ]}
         >
