@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
-import logo from './logolist.png';
+import logo from './logo.png';
 import './App.css';
 import MyButton from './components/MyButton';
-import { PlusCircleOutlined } from '@ant-design/icons';
 import ListModal from './components/ListModal';
-import Fire from './Fire';
+import { PlusOutlined } from '@ant-design/icons';
+import Fire from "./Fire";
 import { Spin } from 'antd';
-import ListCard from './components/ListCard'
-
+import ListCard from './components/ListCard';
 
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -17,7 +16,7 @@ export default function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const firebase = new Fire ((error) => {
+    const firebase = new Fire((error) => {
       if (error) {
         setError(error);
       } else {
@@ -32,7 +31,6 @@ export default function App() {
     });
   }, []);
 
-  console.log(lists, loading);
   return (
     <div className="App">
       <header className="App-header">
@@ -40,24 +38,22 @@ export default function App() {
         <p>
           Bienvenue sur mon application de gestion de listes
         </p>
-        {error && (<p>Erreur : {error.message}</p>)}
+        {error && (<p className="text-danger">Erreur : {error.message}</p>)}
         {loading ? <Spin /> : (
           <div className="d-flex flex-wrap">
-            {lists.map(list => (
-              <>
-              <p key={list.id} style={{color: list.color}}>{list.name}</p>
+            {lists.map(list => (  
               <ListCard list={list} setIsModalVisible={setIsModalVisible} setSelectedList={setSelectedList} />
-              </>
             ))}
           </div>
         )}
         <MyButton
-          icon={<PlusCircleOutlined />}
+          tooltip="Ajouter une liste"
           onClick={() => setIsModalVisible(true)}
-          >
+          icon={<PlusOutlined />}
+        >
           Ajouter une liste
-          </MyButton>
-          <ListModal list={selectedList} modalTitle={selectedList ? "Modifier la liste" : "Ajout de liste"} isVisible={isModalVisible} handleCancel={() => setIsModalVisible(false)} />
+        </MyButton>
+        <ListModal list={selectedList} modalTitle={selectedList ? "Modifier la liste" : "Ajouter une liste"} isVisible={isModalVisible} handleCancel={() => setIsModalVisible(false)} />
       </header>
     </div>
   );

@@ -4,8 +4,8 @@ import ListForm from "./ListForm";
 import Fire from "../Fire";
 
 export default function ListModal(props) {
-    const [name,setName] = useState(props.list ? props.list.name : "");
-    const [color, setColor] = useState(props.list ? props.list.color : "#3B97FF");
+    const [name, setName] = useState(props.list ? props.list.name : "");
+    const [color, setColor] = useState(props.list ? props.list.color :"#3B97FF");
     const [error, setError] = useState(null);
 
     function handleSubmit() {
@@ -18,25 +18,31 @@ export default function ListModal(props) {
                     "color": color,
                     "tasks": []
                 }
-                firebase.addList(list);
+                if (props.list) {
+                    list.id = props.list.id;
+                    list.tasks = props.list.tasks;
+                    firebase.updateList(list);
+                } else {
+                    firebase.addList(list);
+                }
             }
-        });
+        })
         props.handleCancel();
     }
 
     return (
-        <Modal 
-            title={props.modalTitle} 
-            visible={props.isVisible} 
+        <Modal
+            title={props.modalTitle}
+            visible={props.isVisible}
             onCancel={props.handleCancel}
             footer={[
-                <Button type="primary" shape="round" onClick={handleSubmit}>
-                    {props.lis ? "Valider modifications" : "Créer la liste"}
+                <Button type="primary" onClick={handleSubmit} >
+                    {props.list ? "Modifier" : "Créer"}
                 </Button>
             ]}
         >
             {error && <p>Une erreur est survenue</p> }
             <ListForm name={name} color={color} setName={setName} setColor={setColor} />
-      </Modal>
+        </Modal>
     );
 }
