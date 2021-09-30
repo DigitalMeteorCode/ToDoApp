@@ -1,15 +1,13 @@
-//import firebase from "firebase"; cet import est daté d'un vieux versionnage de firebase. celui ci-dessous est comptatible avec la nouvelle version (9.0.2) de firebase
-import firebase from 'firebase/compat/app';
-
+import firebase from "firebase";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDsuliXndvhklkwH25DDeNINhOaX7RFmKU",
-    authDomain: "todo-list-app-89abd.firebaseapp.com",
-    projectId: "todo-list-app-89abd",
-    storageBucket: "todo-list-app-89abd.appspot.com",
-    messagingSenderId: "731720285104",
-    appId: "1:731720285104:web:969ef93fead20a4d1f3475"
-  };
+    apiKey: "AIzaSyBheznryneyMUt891q98hqZja4X7T4Vl8E",
+    authDomain: "todoapp-131c7.firebaseapp.com",
+    projectId: "todoapp-131c7",
+    storageBucket: "todoapp-131c7.appspot.com",
+    messagingSenderId: "549328675845",
+    appId: "1:549328675845:web:2bd4947b8e06b336c7286c"
+};
 
 export default class Fire {
     constructor(callback) {
@@ -60,4 +58,3 @@ export default class Fire {
         this.unsubscribe();
     }
 }
-/*tout ce code compliqué est trouvable dans les documentations de firebase, ce n'est pas le genre de chose que l'on apprend par coeur ! c'est à considérer comme une boîte à outils pour FIREBASE*/

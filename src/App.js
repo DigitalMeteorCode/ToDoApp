@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import logo from './logo.png';
+import logo from './logolist.png';
 import './App.css';
 import MyButton from './components/MyButton';
 import ListModal from './components/ListModal';
